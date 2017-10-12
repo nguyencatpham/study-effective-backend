@@ -1,0 +1,8 @@
+/node_modules
+/.idea
+/*.log
+/.DS_Store
+public/uploads/*
+!public/uploads/no-images.jpg
+/scripts.sql
+/dist

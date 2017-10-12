@@ -1,0 +1,19 @@
+{
+    "host": {
+      "port":2508,
+      "domain": "http://localhost",
+      "swagger": {
+        "host": "localhost",
+        "basePath" : "/"
+      }
+    },
+    "database":{
+      "username": "root",
+      "password": "123456",
+      "database": "study-effective",
+      "host": "local",
+      "dialect": "mysql",
+      "logging": false,
+      "port": 3306
+    }
+  }
