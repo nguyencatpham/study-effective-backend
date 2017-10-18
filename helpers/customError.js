@@ -1,6 +1,6 @@
 'use strict';
 
-export default customError = (message, status)=> {
+export const customError = (message, status)=> {
   Error.captureStackTrace(this, this.constructor);
   this.name = this.constructor.name;
   this.message = message;
@@ -8,3 +8,5 @@ export default customError = (message, status)=> {
 };
 
 require('util').inherits(module.exports, Error);
+
+export default customError

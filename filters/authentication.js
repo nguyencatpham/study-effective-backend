@@ -2,16 +2,16 @@
 
 import {async} from 'asyncawait'
 import userServices from '../services/userService'
-import roleServices from '../services/roleService'
+// import roleServices from '../services/roleService'
 
-import apiAllowAnonymous from '../helper/apiAllowAnonymous'
-import apiAuthorize from '../helper/apiAuthorize'
-import helpCrypto from '../helper/crypto'
+// import apiAllowAnonymous from '../helpers/apiPublic'
+// import apiAuthorize from '../helper/apiAuthorize'
+import helpCrypto from '../helpers/crypto'
 import _ from 'lodash'
 import logger from '../services/logger'
-import workContext from './workContext'
+// import workContext from './workContext'
 
-export default services = {
+export const services = {
     // authorize 
     requireLogin: async(req, res, next) => {
         try {
@@ -50,13 +50,13 @@ export default services = {
                 return res.status(401).send("Token invalid");
             }
 
-            let roles = await (roleServices.getByUserId(userObj.id).catch(function (err) {
-                logger.logError(err);
-                return res.sendStatus(500);
-            }));
+            // let roles = await (roleServices.getByUserId(userObj.id).catch(function (err) {
+            //     logger.logError(err);
+            //     return res.sendStatus(500);
+            // }));
             req.session.user = req.session.user ? req.session.user : {};
             req.session.user[token] = userObj;
-            req.session.user[token].roles = roles;
+            // req.session.user[token].roles = roles;
 
             return next();
         } catch (err) {
@@ -92,13 +92,13 @@ export default services = {
             return null;
         }
 
-        let roles = await (roleServices.getByUserId(userObj.id).catch((err) => {
-            return res.status(400).send(err);
-        }));
+        // let roles = await (roleServices.getByUserId(userObj.id).catch((err) => {
+        //     return res.status(400).send(err);
+        // }));
 
         req.session.user = req.session.user ? req.session.user : {};
         req.session.user[token] = userObj;
-        req.session.user[token].roles = roles;
+        // req.session.user[token].roles = roles;
 
         return userObj;
     },
@@ -128,3 +128,4 @@ export default services = {
         return next();
     }
 };
+export default services

@@ -1,12 +1,9 @@
-import Log from 'log'
 import fs from 'fs'
 import path from "path"
+import Log from 'log'
 let log = new Log('debug', fs.createWriteStream('systemLog.log'))
 
-export default services = {
-    logError: (message) => {
-        log.error(message)
-    },
+export const logger = {
     logError: (message) => {
         log.error(message)
     },
@@ -20,3 +17,4 @@ export default services = {
         log.warning(message)
     }
 }
+export default logger

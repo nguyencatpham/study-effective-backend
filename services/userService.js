@@ -1,19 +1,18 @@
 "use strict";
-import async from 'asyncawait/async'
+import {async} from 'asyncawait'
 import _ from 'lodash'
 import Promise from 'bluebird'
 import path from 'path'
 import config from "config"
-import entities from '../entities'
-import camelResult from '../helper/camelResult'
-import cacheManager from '../services/cacheManager'
+import entities from '../entities/user'
+import camelResult from '../helpers/camelResult'
 
 let tsconfig = config.get("host")
 // define key cache
 let user_by_pattern = 'user.by'
 let user_by_token = 'user.by.{0}'
 
-export default services = {
+export const services = {
     getAll: () => {
         return new Promise((resolve, reject) => {
             let query = `select u.id, u.userName, u.email, u.phoneNumber, u.firstName, u.lastName, u.isActive
@@ -160,3 +159,4 @@ export default services = {
         });
     }
 }
+export default services

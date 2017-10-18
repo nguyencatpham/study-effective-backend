@@ -1,8 +1,9 @@
 "use strict";
 
-export default helpers = [
+export const helpers = [
     '/api-docs',
     '/swagger.json',
     '/accounts/token',
     '/accounts/register'
 ]
+export default helpers

@@ -1,13 +1,13 @@
-import async from 'asyncawait/async'
+import {async} from 'asyncawait'
 import _ from 'lodash'
 import validator from 'validator'
 import dateFormat from 'dateformat'
-import logger from '../../services/logger'
+// import logger from '../../services/logger'
 
 import topicService from '../../services/topicService'
-import customError from "../../helper/customError"
+// import customError from "../../helpers/customError"
 
-export default baseController = {
+export const baseController = {
     getAll: async(req, res, next) => {
         let result = await (topicService.getAll()
             .catch((err) => res.status(500).send()))
@@ -37,14 +37,14 @@ export default baseController = {
     create: async(req, res, next) => {
         try {
             if (!req.body.name) {
-                throw new CustomError('Name was empty.', 400)
+                res.status(400).send()
             }
 
             let topic = await (topicService.getByName(req.body.name)
                 .catch((err) => res.status(500).send()))
 
             if (topic) {
-                throw new CustomError('Name has exists.', 400)
+                res.status(400).send()
             }
 
             let params = {
@@ -102,3 +102,4 @@ export default baseController = {
         res.status(204).send()
     }
 }
+export default baseController

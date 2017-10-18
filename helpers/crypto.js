@@ -4,7 +4,7 @@ import crypto from "crypto-js"
 import md5 from 'crypto-js/md5'
 import sha256 from "crypto-js/sha256"
 
-export default helper = {
+export const helper = {
     //create password
     generatePassword: (password) => {
         let salt = crypto.lib.WordArray.random(128 / 8);
@@ -403,3 +403,4 @@ export default helper = {
     //get text outside brackets
     getTextOutsideBrackets: (text) => !text ? text : text.replace(text.match(/\((.*?)\)/)[0], '').trim()
 }
+export default helper

@@ -1,9 +1,9 @@
 "use strict";
 
-import entities from '../entities'
+import entities from '../entities/user'
 import Promise from 'bluebird'
 
-export default services = {
+export const services = {
     /**
      * get token by accept token
      * @param acceptToken
@@ -93,3 +93,4 @@ export default services = {
         });
     }
 }
+export default services
